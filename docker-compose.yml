@@ -1,0 +1,26 @@
+version: '2'
+services:
+  rabbitmq:
+    image: rabbitmq:3.6
+  postgres:
+    image: postgres:9.6
+    environment:
+      - POSTGRES_USER=fyler
+      - POSTGRES_PASSWORD=fyler
+      - POSTGRES_DB=fyler_dev
+  fylerx:
+    build:
+      context: ./fylerx
+    links: 
+      - rabbitmq
+      - postgres
+    depends_on: 
+      - rabbitmq
+      - postgres
+  fyler-worker:
+    build:
+      context: ./fyler_worker
+    links: 
+      - rabbitmq
+    depends_on:
+      - rabbitmq

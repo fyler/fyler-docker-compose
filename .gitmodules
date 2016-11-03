@@ -1,0 +1,6 @@
+[submodule "fylerx"]
+	path = fylerx
+	url = https://github.com/fyler/fylerx
+[submodule "fyler_worker"]
+	path = fyler_worker
+	url = https://github.com/fyler/fyler_worker
